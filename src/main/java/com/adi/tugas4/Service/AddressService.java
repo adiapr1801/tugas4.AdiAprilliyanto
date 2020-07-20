@@ -5,6 +5,10 @@ import com.adi.tugas4.Model.User;
 import com.adi.tugas4.Repository.AddressRepository;
 import com.adi.tugas4.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -108,6 +112,14 @@ public class AddressService {
                 return null;
         }
     }
-
+    public List<User> getAllUser(Integer pageNo, String sortKey){
+        int noOfRecord = 1;
+        Pageable page = PageRequest.of(pageNo, noOfRecord, Sort.by(sortKey));
+        Page <User> pagedResult = userRepository.findAll(page);
+        return pagedResult.getContent();
+    }
 
 }
+
+
+

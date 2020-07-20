@@ -23,6 +23,7 @@ public class User {
     private  Address address;
 
     public User(){}
+    public User(int id, String username, boolean b){}
 
     public User(int id, String username, String password, String name, String role, String email, boolean active, Address address) {
         this.id = id;
